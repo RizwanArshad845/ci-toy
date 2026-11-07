@@ -1,0 +1,18 @@
+# Toy CI (Task 6.6): runs the tests on every push with a matrix of two Python versions.
+name: toy-tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12", "3.13"]   # one job per version, run in parallel
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install pytest
+      - run: pytest -v
