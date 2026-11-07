@@ -2,7 +2,7 @@
 
 
 def add(a, b):
-    return a - b  # deliberate bug: makes the first CI run fail (red)
+    return a + b  # fixed: second CI run is green
 
 
 def divide(a, b):
